@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SkiaSharp" Version="1.59.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="AnimatedGifEncoder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="GifDecoder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="LZWEncoder.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="NeuQuant.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+
+</Project>
