@@ -7,3 +7,5 @@ The change is to use SkiaSharp instead of System.Drawing and to target .NET Stan
 
 See the original project here:
 http://www.codeproject.com/Articles/11505/NGif-Animated-GIF-Encoder-for-NET
+
+NOTE: Although this code is marked as MIT License, the original Java code was unlicensed and the .NET port was [COPL licenced](https://www.codeproject.com/info/cpol10.aspx).
