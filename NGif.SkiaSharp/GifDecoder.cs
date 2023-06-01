@@ -84,9 +84,9 @@ namespace NGif.Components {
 
 		protected int ix, iy, iw, ih; // current image rectangle
 		protected SKRect lastRect; // last image rect
-		protected SKImage image; // current frame
+		protected SKBitmap image; // current frame
 		protected SKBitmap bitmap;
-		protected SKImage lastImage; // previous frame
+		protected SKBitmap lastImage; // previous frame
 
 		protected byte[] block = new byte[256]; // current data block
 		protected int blockSize = 0; // block size
@@ -113,12 +113,12 @@ namespace NGif.Components {
 
 		public class GifFrame 
 		{
-			public GifFrame(SKImage im, int del) 
+			public GifFrame(SKBitmap im, int del) 
 			{
 				image = im;
 				delay = del;
 			}
-			public SKImage image;
+			public SKBitmap image;
 			public int delay;
 		}
 
@@ -153,7 +153,7 @@ namespace NGif.Components {
 		 *
 		 * @return BufferedImage containing first frame, or null if none.
 		 */
-		public SKImage GetImage() 
+		public SKBitmap GetImage() 
 		{
 			return GetFrame(0);
 		}
@@ -234,7 +234,7 @@ namespace NGif.Components {
 				{
 					//				int[] prev =
 					//					((DataBufferInt) lastImage.getRaster().getDataBuffer()).getData();
-					uint[] prev = GetPixels( SKBitmap.FromImage( lastImage ) );
+					uint[] prev = GetPixels( lastImage );
 					Array.Copy(prev, 0, dest, 0, width * height);
 					// copy pixels
 
@@ -324,9 +324,9 @@ namespace NGif.Components {
 		 *
 		 * @return BufferedImage representation of frame, or null if n is invalid.
 		 */
-		public SKImage GetFrame(int n) 
+		public SKBitmap GetFrame(int n) 
 		{
-			SKImage im = null;
+            SKBitmap im = null;
 			if ((n >= 0) && (n < frameCount)) 
 			{
 				im = ((GifFrame) frames[n] ).image;
@@ -808,7 +808,7 @@ namespace NGif.Components {
 			//			new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB_PRE);
 
 			bitmap = new SKBitmap( width, height );
-			image = SKImage.FromBitmap( bitmap );
+			image = bitmap;
 			SetPixels(); // transfer pixel data to image
 
 			frames.Add(new GifFrame(image, delay)); // add image to frame list

@@ -35,8 +35,8 @@ namespace Example
 			gifDecoder.Read(outputFilePath);
 			for ( int i = 0, count = gifDecoder.GetFrameCount(); i < count; i++ ) 
 			{
-				SKImage frame = gifDecoder.GetFrame( i );  // frame i
-                File.WriteAllBytes(outputFilePath + i + ".png", frame.Encode().ToArray());
+                SKBitmap frame = gifDecoder.GetFrame( i );  // frame i
+                File.WriteAllBytes(outputFilePath + i + ".png", SKImage.FromBitmap(frame).Encode().ToArray());
             }
 		}
 	}
